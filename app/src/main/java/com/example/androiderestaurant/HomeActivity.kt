@@ -44,8 +44,6 @@ class HomeActivity : AppCompatActivity() {
     private fun buttonsListener() {
         binding.button.setOnClickListener {
             Log.d( "button", "CLick sur button entrées")
-            val intent = Intent(this, MenuActivity::class.java )
-            startActivity(intent)
             showCategory(Category.STARTER )
 
         }
@@ -53,16 +51,12 @@ class HomeActivity : AppCompatActivity() {
         binding.buttonmain.setOnClickListener {
             Log.d( "button", "CLick sur button desserts")
             Toast.makeText(this,"Desserts", Toast.LENGTH_LONG  ).show()
-            val intent = Intent(this, MenuActivity::class.java )
-            startActivity(intent)
             showCategory(Category.DESSERT)
         }
 
         binding.button3.setOnClickListener {
             Log.d( "button", "CLick sur button plats")
             Toast.makeText(this,"Plats", Toast.LENGTH_LONG  ).show()
-            val intent = Intent(this, MenuActivity::class.java )
-            startActivity(intent)
             showCategory(Category.MAIN)
 
         }

@@ -12,11 +12,4 @@
         android:layout_height="733dp"
         app:srcCompat="@drawable/papier5" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/entr_e2"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="132dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

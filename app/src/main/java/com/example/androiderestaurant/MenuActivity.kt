@@ -28,6 +28,9 @@ class MenuActivity : AppCompatActivity() {
 
         val category = intent.getSerializableExtra(extraKey) as? Category
 
+        supportActionBar?.title = categoryName(category?: Category.STARTER)
+        //if category == nul {category = STARTER}
+
 
     }
 
