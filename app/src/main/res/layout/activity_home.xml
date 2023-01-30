@@ -7,28 +7,48 @@
     android:background="@color/white"
     tools:context=".HomeActivity">
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="539dp"
+        android:layout_height="917dp"
+        android:src="@drawable/papier5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
+
     <Button
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="242dp"
         android:layout_height="62dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="84dp"
         android:background="@color/clear"
         android:text="@string/starter"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="@+id/button3" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/entr_e2"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/button" />
 
     <View
         android:id="@+id/view10"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="27dp"
-        android:background="@color/purple_500"
-        android:backgroundTint="@color/purple_500"
+        android:background="@color/black"
+        android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonmain" />
 
@@ -39,21 +59,31 @@
         android:layout_marginTop="80dp"
         android:background="@color/clear"
         android:text="@string/finish"
-        android:textColor="@color/purple_200"
+        android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="@+id/button3"
         app:layout_constraintStart_toStartOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="56dp"
+        android:src="@drawable/dessert"
+        app:layout_constraintStart_toEndOf="@+id/buttonmain"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <View
         android:id="@+id/view8"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="88dp"
-        android:background="@color/purple_500"
-        android:backgroundTint="@color/purple_500"
+        android:layout_marginTop="44dp"
+        android:background="@color/black"
+        android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
         android:id="@+id/button3"
@@ -61,45 +91,43 @@
         android:layout_height="68dp"
         android:background="@color/clear"
         android:text="@string/main"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449" />
+        app:layout_constraintVertical_bias="0.541" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:src="@drawable/plats2"
+        app:layout_constraintBottom_toBottomOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/button3" />
 
     <View
         android:id="@+id/view9"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="27dp"
-        android:background="@color/purple_500"
-        android:backgroundTint="@color/purple_500"
+        android:background="@color/black"
+        android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="104dp"
-        android:layout_height="103dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/star_big_on" />
-
     <TextView
         android:id="@+id/textView"
-        android:layout_width="252dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="16dp"
-        android:text="Bienvenue sur AndroidERestaurant"
-        android:textColor="@color/purple_700"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        android:layout_width="523dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="100dp"
+        android:text="AndroidERestaurant"
+        android:textColor="@color/black"
+        android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
