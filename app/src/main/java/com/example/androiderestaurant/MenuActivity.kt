@@ -10,7 +10,9 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.androiderestaurant.databinding.ActivityHomeBinding
 import com.example.androiderestaurant.databinding.ActivityMenuBinding
+import com.example.androiderestaurant.network.MenuResult
 import com.example.androiderestaurant.network.NetworkConstants
+import com.google.gson.GsonBuilder
 import layout.CustomAdapter
 import org.json.JSONObject
 import java.lang.reflect.Method
@@ -61,6 +63,11 @@ class MenuActivity : AppCompatActivity() {
         )
         queue.add(request)
         //showDatas()
+    }
+
+    private fun parseData(data : String) {
+        val result = GsonBuilder().create().fromJson(data, MenuResult::class.java)
+        Log.d("request", "parsing")
     }
     private fun showDatas() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
