@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androiderestaurant.databinding.ActivityHomeBinding
 import com.example.androiderestaurant.databinding.ActivityMenuBinding
+import layout.CustomAdapter
 
 enum class Category { STARTER, MAIN, DESSERT}
 
@@ -31,6 +33,17 @@ class MenuActivity : AppCompatActivity() {
         supportActionBar?.title = categoryName(category?: Category.STARTER)
         //if category == nul {category = STARTER}
 
+        showDatas()
+
+
+    }
+
+    private fun showDatas() {
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = CustomAdapter(listOf("1", "2", "3")) { position ->
+            val intent = Intent(this, DetailActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
