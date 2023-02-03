@@ -26,6 +26,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
     lateinit var binding: ActivityMenuBinding
+    lateinit var currentCategory: Category
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,11 +37,13 @@ class MenuActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val category = intent.getSerializableExtra(extraKey) as? Category
+        currentCategory = category ?: Category.STARTER
 
-        supportActionBar?.title = categoryName(category?: Category.STARTER)
+        supportActionBar?.title = categoryName()
         //if category == nul {category = STARTER}
 
         makeRequest()
+        categoryFilterKey()
 
     }
 
@@ -55,6 +58,7 @@ class MenuActivity : AppCompatActivity() {
             {result ->
                 //Success of request
                 Log.d("resquest", result.toString(2))
+                parseData(result.toString())
             },
             {error ->
                 //Error when request
@@ -67,11 +71,13 @@ class MenuActivity : AppCompatActivity() {
 
     private fun parseData(data : String) {
         val result = GsonBuilder().create().fromJson(data, MenuResult::class.java)
-        Log.d("request", "parsing")
+        val category = result.data.first { it.name == categoryFilterKey() }
+        showDatas(category)
+       // Log.d("request", "parsing")
     }
-    private fun showDatas() {
+    private fun showDatas(category: com.example.androiderestaurant.network.Category) {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = CustomAdapter(listOf("1", "2", "3")) { position ->
+        binding.recyclerView.adapter = CustomAdapter(listOf("1", "2", "3")) {
             val intent = Intent(this, DetailActivity::class.java)
             startActivity(intent)
         }
@@ -99,11 +105,18 @@ class MenuActivity : AppCompatActivity() {
     }
 
 
-    private fun categoryName(category: Category) : String {
-        return when(category) {
+    private fun categoryName() : String {
+        return when(currentCategory) {
             Category.STARTER -> getString(R.string.starter)
             Category.MAIN -> getString(R.string.main)
             Category.DESSERT -> getString(R.string.finish)
+        }
+    }
+    private fun categoryFilterKey() : String {
+        return when(currentCategory) {
+            Category.STARTER -> "Entrées"
+            Category.MAIN -> "Plats"
+            Category.DESSERT -> "Desserts"
         }
     }
 
