@@ -8,8 +8,9 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androiderestaurant.databinding.CellCustomBinding
+import com.example.androiderestaurant.network.Plate
 
-class CustomAdapter(val items : List<String>, val clickListener: (Int) -> Unit) : RecyclerView.Adapter<CustomAdapter.CellViewHolder>() {
+class CustomAdapter(val items : List<Plate>, val clickListener: (Int) -> Unit) : RecyclerView.Adapter<CustomAdapter.CellViewHolder>() {
     class CellViewHolder(binding: CellCustomBinding) : RecyclerView.ViewHolder(binding.root) {
         val textView : TextView = binding.itemName
         val root: ConstraintLayout = binding.root
@@ -20,7 +21,7 @@ class CustomAdapter(val items : List<String>, val clickListener: (Int) -> Unit) 
     }
 
     override fun onBindViewHolder(holder: CellViewHolder, position: Int) {
-        holder.textView.text = items[position]
+        holder.textView.text = items[position].name
         holder.root.setOnClickListener {
             Log.d("click", "click on ${position}")
             clickListener(position)

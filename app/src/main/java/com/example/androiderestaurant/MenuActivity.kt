@@ -12,6 +12,7 @@ import com.example.androiderestaurant.databinding.ActivityHomeBinding
 import com.example.androiderestaurant.databinding.ActivityMenuBinding
 import com.example.androiderestaurant.network.MenuResult
 import com.example.androiderestaurant.network.NetworkConstants
+import com.example.androiderestaurant.network.Plate
 import com.google.gson.GsonBuilder
 import layout.CustomAdapter
 import org.json.JSONObject
@@ -39,11 +40,12 @@ class MenuActivity : AppCompatActivity() {
         val category = intent.getSerializableExtra(extraKey) as? Category
         currentCategory = category ?: Category.STARTER
 
+
+
         supportActionBar?.title = categoryName()
         //if category == nul {category = STARTER}
 
         makeRequest()
-        categoryFilterKey()
 
     }
 
@@ -59,6 +61,7 @@ class MenuActivity : AppCompatActivity() {
                 //Success of request
                 Log.d("resquest", result.toString(2))
                 parseData(result.toString())
+
             },
             {error ->
                 //Error when request
@@ -77,7 +80,7 @@ class MenuActivity : AppCompatActivity() {
     }
     private fun showDatas(category: com.example.androiderestaurant.network.Category) {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = CustomAdapter(listOf("1", "2", "3")) {
+        binding.recyclerView.adapter = CustomAdapter(category.items) {
             val intent = Intent(this, DetailActivity::class.java)
             startActivity(intent)
         }
@@ -119,7 +122,6 @@ class MenuActivity : AppCompatActivity() {
             Category.DESSERT -> "Desserts"
         }
     }
-
 }
 
 

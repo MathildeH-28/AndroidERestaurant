@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.example.androiderestaurant.databinding.ActivityHomeBinding
+import com.example.androiderestaurant.network.Plate
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -41,11 +42,18 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    private fun showPlate(plats: Plate) {
+        val intent = Intent(this, MenuActivity::class.java)
+        intent.putExtra(MenuActivity.extraKey, plats)
+        startActivity(intent)
+
+    }
+
     private fun buttonsListener() {
         binding.button.setOnClickListener {
             Log.d( "button", "CLick sur button entrées")
+            Toast.makeText(this,"Entrées", Toast.LENGTH_LONG  ).show()
             showCategory(Category.STARTER )
-
         }
 
         binding.buttonmain.setOnClickListener {
