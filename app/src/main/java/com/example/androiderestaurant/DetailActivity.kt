@@ -12,6 +12,7 @@ import com.example.androiderestaurant.network.Ingredient
 import com.example.androiderestaurant.network.MenuResult
 import com.example.androiderestaurant.network.Plate
 import com.google.gson.GsonBuilder
+import com.squareup.picasso.Picasso
 import layout.CustomAdapter
 
 class DetailActivity : AppCompatActivity() {
@@ -33,9 +34,11 @@ class DetailActivity : AppCompatActivity() {
         plate = intent.getSerializableExtra("plate") as? Plate ?: Plate("", listOf(), listOf(), listOf())
 
         val ingredient = plate.ingredients.map { it.name }.joinToString(",")
+        val imagePlate = binding.imagePlate
 
+        Picasso.get().load(getThumbnail(plate)).into(imagePlate)
 
-        supportActionBar?.title = "Détails"
+        supportActionBar?.title = plate.name
 
         ShowIngredients(ingredient)
         
@@ -44,6 +47,14 @@ class DetailActivity : AppCompatActivity() {
     private fun ShowIngredients(ingredient: String) {
         binding.textview.text = ingredient
 
+    }
+
+    private fun getThumbnail(plate : Plate) : String? {
+        return if (plate.images.isNotEmpty() && plate.images.firstOrNull()?.isNotEmpty() == true) {
+            plate.images.firstOrNull()
+        } else {
+            null
+        }
     }
 
 
