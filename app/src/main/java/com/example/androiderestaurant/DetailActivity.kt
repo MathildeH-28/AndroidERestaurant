@@ -3,8 +3,10 @@ package com.example.androiderestaurant
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.Contacts.Photo
 import android.util.Log
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androiderestaurant.databinding.ActivityDetailBinding
 import com.example.androiderestaurant.databinding.ActivityMenuBinding
@@ -36,12 +38,14 @@ class DetailActivity : AppCompatActivity() {
         val ingredient = plate.ingredients.map { it.name }.joinToString(",")
         val imagePlate = binding.imagePlate
 
+
         Picasso.get().load(getThumbnail(plate)).into(imagePlate)
 
         supportActionBar?.title = plate.name
 
         ShowIngredients(ingredient)
-        
+        buttonsListener()
+
     }
 
     private fun ShowIngredients(ingredient: String) {
@@ -58,7 +62,29 @@ class DetailActivity : AppCompatActivity() {
     }
 
 
+    private fun ajoutPanier()  {
+       /* var nbrplat = 0
+        binding.nbrPlat.text = nbrplat+1*/
+        //le but serait qu'à chaque fois qu'on appuie sur le bouton plus le nombre s'incrémente, comme un compteur
+    }
 
+    private fun buttonsListener() {
+        var nbrplat = 0
+        binding.buttonAjt.setOnClickListener {
+            Log.d("button", "CLick sur button ajouté")
+            nbrplat = nbrplat + 1
+          //  nbrplat.toString(nbrplat)
+            Log.e("button ajout", "${nbrplat}")
+          //  binding.nbrPlat.text = ingredient
+        }
+        binding.buttonRet.setOnClickListener {
+            Log.d("button", "CLick sur button ajouté")
+            nbrplat = nbrplat - 1
+            //  nbrplat.toString(nbrplat)
+            Log.e("button ajout", "${nbrplat}")
+            //  binding.nbrPlat.text = ingredient
+        }
+    }
     override fun onStart() {
         super.onStart()
         Log.d("LifeCycle", "DetailActivity onStart")
