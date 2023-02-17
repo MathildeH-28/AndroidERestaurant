@@ -9,6 +9,7 @@ import com.example.androiderestaurant.databinding.ActivityHomeBinding
 import com.example.androiderestaurant.network.Plate
 
 class HomeActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,6 +68,13 @@ class HomeActivity : AppCompatActivity() {
             Toast.makeText(this,"Plats", Toast.LENGTH_LONG  ).show()
             showCategory(Category.MAIN)
 
+        }
+
+        binding.validPanier.setOnClickListener{
+            Toast.makeText(this,"Panier", Toast.LENGTH_LONG  ).show()
+            val intent = Intent(this, ValidationActivity::class.java)
+            intent.putExtra("Validation","panier")
+            startActivity(intent)
         }
     }
 }
