@@ -27,7 +27,7 @@ class CustomAdapter(val items : List<Plate>, val clickListener: (Plate) -> Unit)
     override fun onBindViewHolder(holder: CellViewHolder, position: Int) {
         val plate = items[position]
         holder.textView.text = items[position].name
-        holder.priceTextView.text = items[position].prices.first().price + "$"
+        holder.priceTextView.text = items[position].prices.first().prices.toString() + "€"
         Picasso.get().load(getThumbnail(plate)).into(holder.imageView)
         holder.root.setOnClickListener {
             Log.d("click", "click on ${position}")

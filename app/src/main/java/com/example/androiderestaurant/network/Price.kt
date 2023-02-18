@@ -4,5 +4,6 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class Price (
-    @SerializedName("price") val price: String,
+    @SerializedName("price") val prices: Float,
+  //  @SerializedName("price") val priceF: Float,
 ): Serializable

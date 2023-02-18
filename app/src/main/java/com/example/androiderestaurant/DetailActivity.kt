@@ -38,8 +38,9 @@ class DetailActivity : AppCompatActivity() {
 
         val ingredient = plate.ingredients.map { it.name }.joinToString(",")
         val imagePlate = binding.imagePlate
-        val price = plate.prices.map { it.price }.toString()
-      //  val priceF : Double = price.toDouble()
+        val price = plate.prices.map { it.prices }.toString()
+        val priceF : Float  = plate.prices.map {it.prices}.component1()
+
 
 
 
@@ -48,7 +49,7 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.title = plate.name
 
         ShowIngredients(ingredient)
-        buttonsListener(/*priceF*/)
+        buttonsListener(priceF)
         totalPrice(price)
 
     }
@@ -71,31 +72,31 @@ class DetailActivity : AppCompatActivity() {
         binding.buttonOK.text = "${price}"
     }
 
-    private fun ajoutPanier(/*priceF : Double*/) {
+    private fun ajoutPanier(priceF : Float) {
         nbrplat = nbrplat + 1
-       // var price2 : Double = priceF * nbrplat
-        Log.e("button ajout", "${nbrplat}")
+        var price2 : Float = priceF * nbrplat
+        Log.e("button ajout", "${price2}")
         binding.nbrPlats.text = "${nbrplat}"
-        //binding.buttonOK.text = "${price2}"
+        binding.buttonOK.text = "Total ${price2} €"
 
     }
         //le but serait qu'à chaque fois qu'on appuie sur le bouton plus le nombre s'incrémente, comme un compteur
 
-    private fun retirePanier(/*priceF: Float?*/) {
+    private fun retirePanier(priceF: Float) {
         nbrplat = nbrplat - 1
-       // var price2 = priceF * nbrplat
+        var price2 = priceF * nbrplat
         Log.e("button ajout", "${nbrplat}")
         binding.nbrPlats.text = "${nbrplat}"
-      //  binding.buttonOK.text = "${price2}"
+        binding.buttonOK.text = "Total ${price2} €"
     }
-    private fun buttonsListener(/*priceF: Double*/) {
+    private fun buttonsListener(priceF: Float) {
         binding.buttonAjt.setOnClickListener {
             Log.d("button", "CLick sur button ajouté")
-            ajoutPanier(/*priceF*/)
+            ajoutPanier(priceF)
         }
         binding.buttonRet.setOnClickListener {
             Log.d("button", "CLick sur button retiré")
-            retirePanier(/*priceF*/)
+            retirePanier(priceF)
 
         }
         binding.buttonOK.setOnClickListener {
