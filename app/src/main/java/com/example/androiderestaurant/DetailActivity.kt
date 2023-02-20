@@ -26,6 +26,7 @@ class DetailActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityDetailBinding
     lateinit var plate : Plate
+  //  lateinit var category: Category
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,7 @@ class DetailActivity : AppCompatActivity() {
         val imagePlate = binding.imagePlate
         val price = plate.prices.map { it.prices }.toString()
         val priceF : Float  = plate.prices.map {it.prices}.component1()
+       // val category = category.name
 
 
 
@@ -67,6 +69,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
     var nbrplat = 0
+    var price2 : Float = 0F
 
     private fun totalPrice(price : String) {
         binding.buttonOK.text = "${price}"
@@ -79,6 +82,8 @@ class DetailActivity : AppCompatActivity() {
         binding.nbrPlats.text = "${nbrplat}"
         binding.buttonOK.text = "Total ${price2} €"
 
+
+
     }
         //le but serait qu'à chaque fois qu'on appuie sur le bouton plus le nombre s'incrémente, comme un compteur
 
@@ -89,7 +94,7 @@ class DetailActivity : AppCompatActivity() {
         binding.nbrPlats.text = "${nbrplat}"
         binding.buttonOK.text = "Total ${price2} €"
     }
-    private fun buttonsListener(priceF: Float) {
+    private fun buttonsListener(priceF: Float/*, category : String*/) {
         binding.buttonAjt.setOnClickListener {
             Log.d("button", "CLick sur button ajouté")
             ajoutPanier(priceF)
@@ -102,6 +107,24 @@ class DetailActivity : AppCompatActivity() {
         binding.buttonOK.setOnClickListener {
             Log.d("button", "CLick sur button retiré")
             binding.panier.text = "${nbrplat}"
+        }
+
+        binding.imagePanier.setOnClickListener {
+            val intent = Intent(this, ValidationActivity::class.java)
+            intent.putExtra("priceF", priceF)
+            intent.putExtra("nbrplat", nbrplat)
+            intent.putExtra("plat", plate.name)
+          //  intent.putExtra("category", category)
+            startActivity(intent)
+        }
+
+        binding.butonHome2.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("priceF", priceF)
+            intent.putExtra("nbrplat", nbrplat)
+            intent.putExtra("plat", plate.name)
+          //  intent.putExtra("category", category) ça nous permettrait de savoir quelle category de plat c'est pour afficher 3 catégories différentes sur la page validation
+            startActivity(intent)
         }
     }
     override fun onStart() {

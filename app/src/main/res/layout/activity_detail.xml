@@ -11,8 +11,8 @@
         android:layout_width="539dp"
         android:layout_height="917dp"
         app:srcCompat="@drawable/papier5"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-18dp" />
 
     <TextView
         android:id="@+id/textview"
@@ -32,9 +32,9 @@
         android:id="@+id/imagePlate"
         android:layout_width="299dp"
         android:layout_height="169dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dessert" />
@@ -74,7 +74,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imagePanier"
         android:layout_width="56dp"
         android:layout_height="45dp"
         android:layout_marginTop="24dp"
@@ -82,6 +82,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/microsoftteams_image__2_" />
+
+    <ImageView
+        android:id="@+id/butonHome2"
+        android:layout_width="61dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/microsoftteams_image__4_" />
 
     <View
         android:id="@+id/view"
@@ -115,7 +125,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imagePanier"
         app:srcCompat="@drawable/microsoftteams_image__3_" />
 
     <TextView

@@ -15,10 +15,16 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        var nbrplat : Int = intent.getIntExtra("nbrplat", 0)
+        var priceF : Float = intent.getFloatExtra("priceF", 0F)
+        var priceT : Float = intent.getFloatExtra("priceT", 0F)
+        var plat = intent.getStringExtra("plat")
+        var category = intent.getStringExtra("category")
+
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root);
 
-        buttonsListener()
+        buttonsListener(nbrplat, priceF, priceT, plat, category)
     }
 
     override fun onStart() {
@@ -50,7 +56,7 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    private fun buttonsListener() {
+    private fun buttonsListener(nbrplat : Int, priceF : Float, priceT : Float, plat : String?, category : String?) {
         binding.button.setOnClickListener {
             Log.d( "button", "CLick sur button entrées")
             Toast.makeText(this,"Entrées", Toast.LENGTH_LONG  ).show()
@@ -74,6 +80,11 @@ class HomeActivity : AppCompatActivity() {
             Toast.makeText(this,"Panier", Toast.LENGTH_LONG  ).show()
             val intent = Intent(this, ValidationActivity::class.java)
             intent.putExtra("Validation","panier")
+            intent.putExtra("priceT", priceT)
+            intent.putExtra("nbrplat", nbrplat)
+            intent.putExtra("plat", plat)
+            intent.putExtra("priceF", priceF)
+            intent.putExtra("category", category)
             startActivity(intent)
         }
     }

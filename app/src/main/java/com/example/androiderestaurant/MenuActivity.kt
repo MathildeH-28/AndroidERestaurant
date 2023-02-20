@@ -83,6 +83,7 @@ class MenuActivity : AppCompatActivity() {
         binding.recyclerView.adapter = CustomAdapter(category.items) {
             val intent = Intent(this, DetailActivity::class.java)
             intent.putExtra("plate", it)
+         //   intent.putExtra("category", category.name)
             startActivity(intent)
         }
 
